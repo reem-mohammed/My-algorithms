@@ -1,0 +1,189 @@
+package com.mycompany.learn;
+
+public class LinkedList {
+
+    Node head;
+//------------------LinkedList Function add--------------------
+
+    public void insert(int data) {
+
+        Node node = new Node();
+        node.data = data;
+        node.next = null;
+
+        if (head == null) {
+
+            head = node;
+
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = node;
+
+        }
+    }
+//------------------------LinkedList Function show -------------------------
+    public void Show() {
+        Node temp = head;
+        while (temp.next != null) {
+            System.out.println(temp.data);
+            temp = temp.next;
+        }
+        System.out.println(temp.data);
+    }
+
+    public void insertAt(int index, int data) {
+
+        if (index == 0) {
+            InsetAtStart(data);
+        } else {
+
+            Node node = new Node();
+            node.data = data;
+            node.next = null;
+
+            Node temp = head;
+            for (int i = 0; i < index - 1; i++) {
+                temp = temp.next;
+            }
+            node.next = temp.next;
+            temp.next = node;
+        }
+
+    }
+
+    //--------------------Function Add in the first node-------------------------
+    public void InsetAtStart(int data) {
+        Node node = new Node();
+        node.data = data;
+        node.next = null;
+        node.next = head;
+        head = node;
+
+    }
+
+    //-----------------------Functiion Delete-----------------------------------
+    public void Delete(int index) {
+
+        Node n = head;
+        Node n1 = head.next;
+        // n1.next=null;
+
+        for (int i = 0; i < index - 1; i++) {
+            n = n.next;
+            n1 = n.next.next;
+
+        }
+
+        n.next = n1.next;
+
+    }
+
+    //----------------------Get Size--------------------------------
+    public int getSize() {
+        Node temp = head;
+        int size = 1;
+        while (temp.next != null) {
+            temp = temp.next;
+            size++;
+        }
+        return size;
+    }
+
+    //-----------------Find middle linked list node*------------------------
+    
+    public int[] GetMiddle() {
+        Node temp = head;
+        int data1;
+        int data2;
+
+        int intArray[] = new int[2];
+
+        if (getSize() % 2 == 0) { // Even elements in linked list
+            for (int i = 0; i < (getSize() / 2) - 1; i++) {
+                temp = temp.next;
+
+            }
+
+            intArray[0] = temp.data;
+            intArray[1] = temp.next.data;
+
+        }
+
+        return intArray;
+
+    }
+
+    //--------------------Another Way to get the Middle------------------------------
+    public void printMiddle() {
+        Node slow_ptr = head;
+        Node fast_ptr = head;
+
+        if (head != null) {
+            while (fast_ptr != null && fast_ptr.next != null) {
+
+                fast_ptr = fast_ptr.next.next;
+                slow_ptr = slow_ptr.next;
+            }
+            System.out.println("The middle element is ["
+                    + slow_ptr.data + "] \n");
+
+            // Delete(slow_ptr.data);
+        }
+    }
+
+
+    //----------------------------Delete the middle node-------------------
+    public void DleteMiddle() {
+        Node slow_ptr = head;
+        Node fast_ptr = head;
+        Node prev = head;
+
+        // int count=0;
+        if (head != null) {
+            while (fast_ptr != null && fast_ptr.next != null) {
+
+                fast_ptr = fast_ptr.next.next;
+                prev = slow_ptr;
+                slow_ptr = slow_ptr.next;
+
+                //   count++;
+            }
+
+            prev.next = slow_ptr.next;
+        }
+
+    }
+
+    //------------------------Delete dublicate elements--------------------
+    public void deleteDublicate() {
+        // Node prev=head;
+        Node temp = head;
+
+        //sorted linked list
+        while (temp.next != null && head != null) {
+            if (temp.data == temp.next.data) {
+                temp.next = temp.next.next;
+            } else {
+                temp = temp.next;
+            }
+        }
+
+    }
+//----------------Reverse Linked List--------------------               
+    public void reverse() {
+        Node temp = head;
+        Node next, prev = null;
+        while (temp != null) {
+            next = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = next;
+        }
+        head = prev;
+    }
+
+    
+}

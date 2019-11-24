@@ -1,0 +1,68 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package InterviewsQ;
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class ImplementLinkedListUsingQueue {
+
+    Node rear;
+    Node front;
+    int size = 0;
+
+    public void enqueue(int value) {
+        Node node = new Node();
+        node.data = value;
+        if (rear == null) {
+            front = rear = node;
+            size++;
+            return;
+        }
+        rear.next = node;
+        rear = node;
+        size++;
+    }
+
+    public Node dequeue() {
+
+        if (front == null) {
+            rear = null;
+            return null;
+        }
+        Node curr = front;
+        curr.next=null;  //return curr with null value not pointer to the front
+        front = front.next;
+        size--;
+
+        return curr;
+    }
+
+    public void print() {
+        Node curr = front;
+        while (curr != null) {
+            System.out.print(" " + curr.data + " ");
+            curr = curr.next;
+            
+        }
+    }
+
+    public static void main(String args[]) {
+        ImplementLinkedListUsingQueue im = new ImplementLinkedListUsingQueue();
+        im.enqueue(5);
+        im.enqueue(6);
+        im.enqueue(4);
+        im.enqueue(7);
+        im.dequeue();
+        im.dequeue();
+        im.enqueue(8);
+     
+        im.print();
+
+    }
+
+}

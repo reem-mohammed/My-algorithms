@@ -1,0 +1,162 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package InterviewsQ;
+
+import com.mycompany.learn.LinkedList;
+
+/**
+ *
+ * @author reemabdallah
+ *
+ */
+ 
+ 
+public class DubileLinkedList {
+
+    NodeD head;
+    
+    
+//---------------Reverse DoubleLinked List--------------
+
+    public void reverse() {
+        NodeD curr = head;
+        NodeD temp = null;
+        //NodeD curr2 = head;
+        
+        while (curr != null) {
+            temp = curr.prev;
+            curr.prev = curr.next;
+            curr.next = temp;
+            head = curr;
+            curr = curr.prev;
+        }
+        
+       
+
+       
+
+    }
+
+//---------Add the first Node-----------------------
+    public void addFirst(int data) {
+        NodeD node = new NodeD();
+        node.data = data;
+        head = node;
+        node.prev = null;
+        node.next = null;
+
+    }
+
+//------------Add the Last Node---------------------
+    public void AddLastNode(int data) {
+        NodeD node = new NodeD();
+        node.data = data;
+        NodeD temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = node;
+        node.prev = temp;
+        node.next = null;
+    }
+
+//---------------Delete the first node------------------
+    public void DeleteFirstNode() {
+        NodeD temp = head;
+        head = head.next;
+        head.next.prev = null;
+        temp.next = null;
+
+    }
+
+
+//----------------Delete the last node-----------------
+    public void DeleteLastNode() {
+        NodeD temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.prev.next = null;
+        temp.prev = null;
+
+    }
+
+
+//----------------add middle node---------------
+    public void addMiddleList(int data, int n) {
+        NodeD node = new NodeD();
+        node.data = data;
+        NodeD curr = head;
+        for (int i = 0; i < n; i++) {
+            curr = curr.next;
+        }
+
+        node.next = curr.next;
+        curr.next.prev = node;
+        curr.next = node;
+        node.prev = curr;
+
+    }
+//---------------Delete the middle node----------------
+    public void deleteMiddle(int n) {
+        NodeD node = new NodeD();
+        NodeD curr = head;
+        for (int i = 0; i < n; i++) {
+            curr = curr.next;
+        }
+
+        curr.prev.next = curr.next;
+        curr.next.prev = curr.prev;
+        curr.next = null;
+        curr.prev = null;
+
+    }
+
+//----------Insert node function----------------
+    public void insert(int data) {
+        NodeD nodeD = new NodeD();
+        nodeD.data = data;
+        if (head == null) {
+            addFirst(data);
+        } else {
+            NodeD curr = head;
+
+            while (curr.next != null) {
+                curr = curr.next;
+            }
+            curr.next = nodeD;
+            nodeD.prev = curr;
+            nodeD.next = null;
+        }
+    }
+
+  
+        
+         public void show() {
+        NodeD curr = head;
+        while (curr != null) {
+            System.out.print(" " + curr.data + " ");
+            curr = curr.next;
+        }
+    }
+
+    public static void main(String args[]) {
+
+        DubileLinkedList list = new DubileLinkedList();
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        
+        
+        list.reverse();
+
+        list.show();
+
+    }
+
+}

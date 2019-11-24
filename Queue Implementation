@@ -1,0 +1,64 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.mycompany.learn.Queue_Implementation;
+
+/**
+ *
+ * @author reemabdallah
+ */
+
+
+public class Queue {
+     int rear;
+     int front;
+     int size=0;
+     int queue[]=new int[5];
+     
+//Insert data     
+public void enqueue(int data){
+    if(size!=5){
+     queue[rear]=data;
+     rear=(rear+1)%5;
+     size++;
+    }
+  }
+
+//Delete data
+public int dequeue(){
+    
+    int data=queue[front];
+    if(size!=0){
+         
+     front=(front+1)%5;
+     size--;
+    }
+     return data;
+    
+  }
+
+public boolean isFull(){
+  return size==5;
+}
+
+public boolean isEmpty(){
+  return size==0;
+}
+
+
+    
+ public void show(){  
+    for(int x :queue){
+    System.out.print(x+" ");     
+    }
+    
+    System.out.print("-------- "); 
+     System.out.print(size+" ");
+ }
+
+
+
+    
+}

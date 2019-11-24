@@ -1,0 +1,85 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.mycompany.learn.StackImplementation;
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class Dstack {
+    int top=0;
+    int stackSize=5;
+    int Dstack[]=new int[stackSize];
+    
+  
+    
+   //---------------push----------------- 
+    public void push(int data){
+       
+        if(top==stackSize){
+        expand();
+        }
+        Dstack[top]=data;
+        top++;
+    
+       
+    }
+    
+    
+    
+    //---------------pop-------------------
+    public int pop() {
+        if(top!=0){
+        top--;
+        
+        if(top<(stackSize/2)){
+         shirnk();
+        }
+        
+        }
+        return top;
+    }
+    
+    
+
+    public void expand() {
+      int Dstack_copy[]=new int[stackSize*2]; 
+      System.arraycopy(Dstack,0,Dstack_copy,0,stackSize);
+        Dstack=Dstack_copy;
+        stackSize*=2;
+  
+    }
+   
+    
+   public void shirnk(){
+       int Dstack_copy[]=new int[stackSize/2]; 
+         System.arraycopy(Dstack,0, Dstack_copy,0,stackSize/2);
+         Dstack=Dstack_copy;
+         stackSize/=2;
+   } 
+    
+   
+   
+   
+   public int peek(){
+       top--;
+       return Dstack[top];
+   }
+    
+   
+   
+    public void print(){
+        for(int i=0;i<top;i++){
+           System.out.println(Dstack[i]);
+           
+        }
+        System.out.println("****the array size is "+stackSize );
+       
+    }
+
+   
+    
+}

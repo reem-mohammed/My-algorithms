@@ -1,1 +1,67 @@
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package InterviewsQ;
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class ImplementationStackUsingLinkedList {
+
+    Node top;
+
+    public void push(int value) {
+        Node node = new Node();
+        node.data = value;
+        if (top == null) {
+            top = node;
+            return;
+        }
+
+        node.next = top;
+        top = node;
+
+    }
+
+    public void pop() {
+        if (top == null) {
+            return;
+        }
+
+        top = top.next;
+    }
+
+    public int peek() {
+        if (top == null) {
+            return -1;
+        }
+        return top.data;
+    }
+    
+     public void print() {
+        Node curr = top;
+        while (curr != null) {
+            System.out.print(" " + curr.data + " ");
+            curr = curr.next;
+            
+        }
+    }
+     
+     
+    public static void main(String args[]) {
+       ImplementationStackUsingLinkedList s = new ImplementationStackUsingLinkedList();
+       s.push(5);
+       s.push(2);
+       s.push(3);
+       s.push(6);
+       s.peek();
+     
+        s.print();
+
+    }
+
+}

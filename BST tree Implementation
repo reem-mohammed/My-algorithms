@@ -1,0 +1,119 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.reem.test.TreeImplementation.TreeIm;
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class Tree {
+   
+    
+//Insert function   
+  public void insertNode(Node n , int val){
+      if(val <= n.data){
+          if(n.left==null){
+              n.left=new Node();
+              n.left.data=val;
+          }else{
+              insertNode(n.left,val);
+          }
+      }else{
+          if(n.right==null){
+              n.right=new Node();
+              n.right.data=val;
+          }else{
+             insertNode(n.right,val); 
+          }
+      }
+      
+  }
+ //-------------------------------------------------------------------------- 
+//Function find Node
+
+public boolean findNode(Node n,int val){
+    
+    //check Root
+  if(val==n.data){
+      return true;
+    
+      
+      
+    //check left node  
+  }else if(val < n.data) {
+      
+      if(n.left==null){
+          return false;
+      }else{
+         findNode(n.left,val);
+      }
+   
+      
+      
+      
+      //check right node
+  }else if(val > n.data){
+      if(n.right==null){
+          return false;
+      }else{
+          findNode(n.right,val);
+      }
+      
+      
+      
+  }
+      return false;
+    
+
+}
+
+
+//-------------------------------------------------------------------------------------------
+
+public void printTree(Node n){
+   
+    //In Order Traversal
+    
+    if(n.left!=null){         //1
+
+    printTree(n.left);
+
+    }
+    
+   System.out.print(n.data); //2
+   
+   
+   
+  
+   if(n.right!=null){        //3
+
+    printTree(n.right);
+
+    }
+  
+   
+}
+//-----------------------------------------------------------------  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+    
+    
+    
+

@@ -1,0 +1,40 @@
+   public List<Integer> postOrderTraversal(TreeNode root) {
+        
+        if(root == null){
+            return new ArrayList<>();
+        }
+    List<Integer> results = new LinkedList<>();
+    Deque<TreeNode> stack = new LinkedList<>();
+    stack.push(0,root);
+    while (!stack.isEmpty()) {
+    
+    TreeNode node = stack.pop();
+    results.add(0,node.val);
+
+    if(node.left!=null){
+        stack.push(node.left);
+    }
+        
+    if(node.right!=null){
+        stack.push(node.right);
+    }
+        
+    }
+    return result;
+}
+
+
+--------------------------------------------------
+ List <Integer> results = new ArrayList<>();
+    public List<Integer> postOrderTraversal(TreeNode root) {
+      
+           if(root == null){
+            return new ArrayList();
+        } 
+       
+         postOrderTraversal(root.left);
+          postOrderTraversal(root.right);
+         results.add(root.val);
+        
+         return results;
+     }

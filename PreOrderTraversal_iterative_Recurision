@@ -1,0 +1,42 @@
+public List<Integer> preOrderTraversal(TreeNode root) {
+        
+        if(root == null){
+            return new ArrayList<>();
+        }
+    List<Integer> results = new LinkedList<>();
+    Deque<TreeNode> stack = new LinkedList<>();
+    stack.push(root);
+    while (!stack.isEmpty()) {
+    
+    TreeNode node = stack.pop();
+    results.add(node.val);
+    
+    if(node.right!=null){
+        stack.push(node.right);
+    }
+
+    if(node.left!=null){
+        stack.push(node.left);
+    }
+        
+        
+    }
+    return result;
+}
+
+
+--------------------------------------------------
+ List <Integer> results = new ArrayList<>();
+    public List<Integer> preOrderTraversal(TreeNode root) {
+      
+           if(root == null){
+            return new ArrayList();
+        } 
+        
+         results.add(root.val);
+         postOrderTraversal(root.left);
+         postOrderTraversal(root.right);
+        
+        
+         return results;
+     }
